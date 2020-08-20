@@ -18,8 +18,21 @@ public class CategoryDB {
 		return output; 
 		
 	}
-	public static void delCategory(Category cat) {
-	
+	public static void delCategory(Category cat) {	
+		categoryList.remove(cat);
+	}
+	public static void showCategoryMenu() {
+		CategoryDB.setHeader("RESOURCE CENTRE APP");
+		System.out.println("1. Add Category");
+		System.out.println("2. View Category");
+		System.out.println("3. Delete Category");
+		
+		
+	}
+	public static void setHeader(String header) {
+		
+		System.out.println(header);
+		
 	}
 	}
 

@@ -51,14 +51,17 @@ public class CategoryTest {
 	public void viewAllCategoriesTest() {
 		// Test if category list is not null but empty -boundary
 		assertNotNull("Test if there is valid Category arraylist to retrieve categories", CategoryDB.categoryList);
+		
 		//test if the list of categories retrieved from the C206 case study is empty - boundary
 		String allCategories= CategoryDB.viewAllCategories();
 		String testOutput = "";
 		assertEquals("Test that the retrieved Category list is empty?", testOutput, allCategories);
+		
 		//Given an empty CategoryList, after adding 2 categories, test if the size of the list is 2 (normal) 
 		CategoryDB.addCategory(cat1);
 		CategoryDB.addCategory(cat2);
 		assertEquals("Test that category arraylist size is 2", 2, CategoryDB.categoryList.size());
+		
 		//test if the expected output string same as the list of categories retrieved from the Category DB
 		allCategories= CategoryDB.viewAllCategories();
 		testOutput = String.format("%-10s %-60s\n", cat1.getCategoryId(),cat1.getCategory());
@@ -71,6 +74,14 @@ public class CategoryTest {
 	public void delCategoryTest() {
 		// Test if category list is not null but empty -boundary
 		assertNotNull("Test if there is valid Category arraylist to retrieve categories", CategoryDB.categoryList);
+		
+		// Test if category exist in the list so that it can be deleted
+		CategoryDB.addCategory(cat1);
+		assertSame("Test that category added equals to category object added (cat1)",cat1,CategoryDB.categoryList.get(0));
+		// test that category chosen is deleted
+		CategoryDB.delCategory(cat1);
+		assertEquals("Test that category in arraylist has decreased once category object removed (cat1)",0,CategoryDB.categoryList.size());
+		
 	}
 
 }
