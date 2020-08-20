@@ -18,5 +18,10 @@ public class Category {
 	public void setCategory(String category) {
 		this.category = category;
 	}
+	public String toString() {
+		String output = String.format("%-10s %-30s", categoryId,category);
+		
+		return output;
+	}
 	
 }
