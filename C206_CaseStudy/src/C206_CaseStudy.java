@@ -58,9 +58,9 @@ public class C206_CaseStudy {
 					}
 					else if (option == 6) {
 						System.out.println("Bye!");
+					} else { 
+						System.out.println("Invalid option");}
 					}
-					} 
-						System.out.println("Invalid option");
 					}
 
 				
