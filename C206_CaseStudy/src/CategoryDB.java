@@ -4,18 +4,26 @@ public class CategoryDB {
 
 	public static ArrayList<Category> categoryList = new ArrayList<Category>();
 	
-	public static Category inputCategory() {
-		String id= Helper.readString("Enter Category ID > ");
-		String category = Helper.readString("Enter Category > ");
-		Category cat = new Category(id, category);
-		return cat;
-	}
+	
 	public static void addCategory(Category cat) {
 		// TODO Auto-generated method stub
+		if (categoryList.size() == 0 && (cat.getCategory().length()<25)) {
+			categoryList.add(cat);
+			System.out.println("Category added");
+		}
+		else if (categoryList.size()>0){
+			for (int i = 0; i < categoryList.size(); i++) {
 		
+			if((!cat.equals(categoryList.get(i))&& (cat.getCategory().length()<25))) {
 		categoryList.add(cat);
-		System.out.println("Category added");
+		System.out.println("Category added");}
+		}
+		}
+		
 	}
+		
+		
+	
 	public static String viewAllCategories(){
 		String output = "";
 		for (int i = 0; i < categoryList.size(); i++) {
@@ -30,24 +38,25 @@ public class CategoryDB {
 		CategoryDB.viewAllCategories();
 		String id= Helper.readString("Enter Category ID > ");
 		String category = Helper.readString("Enter Category > ");
-		cat = new Category(id, category);
-		for (int i = 0; i < categoryList.size(); i++) {
-			if(id.equalsIgnoreCase(categoryList.get(i).getCategoryId()) && category.equalsIgnoreCase(categoryList.get(i).getCategory())) 
+		if (categoryList.size() != 0) {
+			for (int i = 0; i < categoryList.size(); i++) {
+				if(id.equalsIgnoreCase(categoryList.get(i).getCategoryId()) && category.equalsIgnoreCase(categoryList.get(i).getCategory())) 
 			{
-				categoryList.remove(cat);
-			}else{
-				System.out.println("Invalid category id or category");
+				categoryList.remove(i);
+				}
 				
 			}
+		}else{
+			System.out.println("Invalid category id or category");
 		}
 		
 	}
-	public static void updateCategory() {
+	public static void updateCategory(Category cat) {
 		CategoryDB.viewAllCategories();
 		String id= Helper.readString("Enter Category ID > ");
 		String category = Helper.readString("Enter Category > ");
 		for (int i = 0; i < categoryList.size(); i++) {
-			if(id.equalsIgnoreCase(categoryList.get(i).getCategoryId()) && category.equalsIgnoreCase(categoryList.get(i).getCategory())) 
+			if((id.equalsIgnoreCase(categoryList.get(i).getCategoryId())) && (cat.getCategory().length()<25)) 
 			{
 				categoryList.get(i).setCategoryId(id);
 				categoryList.get(i).setCategory(category);
@@ -74,6 +83,12 @@ public class CategoryDB {
 		System.out.println(header);
 		Helper.line(80, "-");
 		
+	}
+	public static Category inputCategory() {
+		String id= Helper.readString("Enter Category ID > ");
+		String category = Helper.readString("Enter Category > ");
+		Category cat = new Category(id, category);
+		return cat;
 	}
 	}
 

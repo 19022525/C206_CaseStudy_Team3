@@ -32,14 +32,14 @@ public class CategoryTest {
 		
 		// test that size of cat list is 1 after adding a category
 		CategoryDB.addCategory(cat1);
-		assertEquals("Test that category list size is 0 before adding any categories",1,CategoryDB.categoryList.size());
+		assertEquals("Test that category list size is 1 after adding any categories",1,CategoryDB.categoryList.size());
 		
 		// test that category object added equals to category object added (cat1)
 		assertSame("Test that category added equals to category object added (cat1)",cat1,CategoryDB.categoryList.get(0));
 		
 		// test that size of cat list is 2 after adding another category
 		CategoryDB.addCategory(cat2);
-		assertEquals("Test that category list size is 1 before adding another category",2,CategoryDB.categoryList.size());
+		assertEquals("Test that category list size is 2 before adding another category",2,CategoryDB.categoryList.size());
 		
 		// test that category object added equals to category object added (cat2)
 		assertSame("Test that category added equals to category object added (cat2)",cat2,CategoryDB.categoryList.get(1));
@@ -89,10 +89,11 @@ public class CategoryTest {
 		assertNotNull("Test if there is valid Category arraylist to retrieve categories", CategoryDB.categoryList);
 		// Test if category exist in the list so that it can be updated
 		CategoryDB.addCategory(cat1);
-		CategoryDB.updateCategory();
+		assertSame("Test that category arraylist size is 1", 1, CategoryDB.categoryList.size());
 		
 		// Test that category array list size does not change after updating
-		assertSame("Test that category arraylist size is 2", 1, CategoryDB.categoryList.size());
+		CategoryDB.updateCategory(cat1);
+		assertSame("Test that category arraylist size is 1", 1, CategoryDB.categoryList.size());
 	}
 
 }

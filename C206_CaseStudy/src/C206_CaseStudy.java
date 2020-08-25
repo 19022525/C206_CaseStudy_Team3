@@ -41,14 +41,17 @@ public class C206_CaseStudy {
 						CategoryDB.showCategoryMenu();
 						int catOption = Helper.readInt("Enter option to select item type > ");
 						if (catOption == 1) {
-							 CategoryDB.inputCategory();
-							
+							 Category cat = CategoryDB.inputCategory();
+							 CategoryDB.addCategory(cat);
 						} else if (catOption == 2) {
 							CategoryDB.viewAllCategories();
 						} else if (catOption == 3) {
-							CategoryDB.inputCategory();
+							Category cat = CategoryDB.inputCategory();
+							CategoryDB.delCategory(cat);
 						} else if (catOption == 4) {
 							CategoryDB.inputCategory();
+							Category cat = CategoryDB.inputCategory();
+							CategoryDB.updateCategory(cat);
 						} else {
 							System.out.println("Invalid category option");
 						}
@@ -70,8 +73,8 @@ public class C206_CaseStudy {
 				System.out.println("2. Student's Menu");
 				System.out.println("3. Instructor's Menu");
 				System.out.println("4. CCA Menu");
-				System.out.println("6. Category Menu");
-				System.out.println("5. Quit");
+				System.out.println("5. Category Menu");
+				System.out.println("6. Quit");
 				Helper.line(80, "-");
 
 			}
