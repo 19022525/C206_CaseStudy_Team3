@@ -83,5 +83,16 @@ public class CategoryTest {
 		assertEquals("Test that category in arraylist has decreased once category object removed (cat1)",0,CategoryDB.categoryList.size());
 		
 	}
+	@Test
+	public void updateCategoryTest() {
+		// Test if category list is not null but empty -boundary
+		assertNotNull("Test if there is valid Category arraylist to retrieve categories", CategoryDB.categoryList);
+		// Test if category exist in the list so that it can be updated
+		CategoryDB.addCategory(cat1);
+		CategoryDB.updateCategory();
+		
+		// Test that category array list size does not change after updating
+		assertSame("Test that category arraylist size is 2", 1, CategoryDB.categoryList.size());
+	}
 
 }
