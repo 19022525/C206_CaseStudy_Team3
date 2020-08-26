@@ -26,6 +26,7 @@ public class CategoryDB {
 	
 	public static String viewAllCategories(){
 		String output = "";
+		System.out.println(String.format("%-10s %-60s\n", "ID:","Category:"));
 		for (int i = 0; i < categoryList.size(); i++) {
 
 			output += String.format("%-10s %-60s\n", categoryList.get(i).getCategoryId(), categoryList.get(i).getCategory());
@@ -36,14 +37,13 @@ public class CategoryDB {
 	}
 	public static void delCategory(Category cat) {	
 		CategoryDB.viewAllCategories();
-		String id= Helper.readString("Enter Category ID > ");
-		String category = Helper.readString("Enter Category > ");
+		
 		if (categoryList.size() != 0) {
 			for (int i = 0; i < categoryList.size(); i++) {
-				if(id.equalsIgnoreCase(categoryList.get(i).getCategoryId()) && category.equalsIgnoreCase(categoryList.get(i).getCategory())) 
+				if((cat.getCategory().equals(categoryList.get(i).getCategory())) && (cat.getCategory().equals(categoryList.get(i).getCategory()))) 
 			{
 				categoryList.remove(i);
-				}
+			}
 				
 			}
 		}else{
@@ -53,18 +53,23 @@ public class CategoryDB {
 	}
 	public static void updateCategory(Category cat) {
 		CategoryDB.viewAllCategories();
+		
 		String id= Helper.readString("Enter Category ID > ");
-		String category = Helper.readString("Enter Category > ");
-		for (int i = 0; i < categoryList.size(); i++) {
-			if((id.equalsIgnoreCase(categoryList.get(i).getCategoryId())) && (cat.getCategory().length()<25)) 
+		String category = Helper.readString("Enter updated Category name > ");
+		if (categoryList.size() != 0) {
+			for (int i = 0; i < categoryList.size(); i++) {
+				if((cat.getCategory().equals(categoryList.get(i).getCategory())) && (cat.getCategory().equals(categoryList.get(i).getCategory()) && (cat.getCategory().length()<25))) 
 			{
 				categoryList.get(i).setCategoryId(id);
 				categoryList.get(i).setCategory(category);
-			}else{
-				System.out.println("Invalid category id or category");
 				
+			} 
 			}
-		}
+		}else{ System.out.println("Invalid category id or category");
+		} 
+			
+			
+		
 		
 		
 	}

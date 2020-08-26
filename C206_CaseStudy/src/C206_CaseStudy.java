@@ -69,7 +69,7 @@ public class C206_CaseStudy {
 							Category cat = CategoryDB.inputCategory();
 							CategoryDB.delCategory(cat);
 						} else if (catOption == CATEGORY_UPDATE) {
-							CategoryDB.inputCategory();
+							
 							Category cat = CategoryDB.inputCategory();
 							CategoryDB.updateCategory(cat);
 						} else {
