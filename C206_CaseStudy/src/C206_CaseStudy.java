@@ -1,6 +1,26 @@
 import java.util.ArrayList;
 public class C206_CaseStudy {
 
+	private static final int CATEGORY_UPDATE = 4;
+
+	private static final int CATEGORY_DELETE = 3;
+
+	private static final int CATEGORY_VIEW = 2;
+
+	private static final int CATEGORY_ADD = 1;
+
+	private static final int OPTION_CCA = 4;
+
+	private static final int OPTION_INSTRUCTOR = 3;
+
+	private static final int OPTION_STUDENTS = 2;
+
+	private static final int OPTION_PARENTS = 1;
+
+	private static final int OPTION_CATEGORY = 5;
+	
+	private static final int OPTION_QUIT = 6;
+
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
@@ -15,40 +35,40 @@ public class C206_CaseStudy {
 
 				int option = 0;
 
-				while (option != 6) {
+				while (option != OPTION_QUIT) {
 
 					C206_CaseStudy.menu();
 					option = Helper.readInt("Enter an option > ");
 
-					if (option == 1) {
+					if (option == OPTION_PARENTS) {
 						// parents
 						C206_CaseStudy.setHeader("Parents");
 
-					} else if (option == 2) {
+					} else if (option == OPTION_STUDENTS) {
 						// student
 						C206_CaseStudy.setHeader("Students");
 
-					} else if (option == 3) {
+					} else if (option == OPTION_INSTRUCTOR) {
 						// instructor
 						C206_CaseStudy.setHeader("Instructor");
 
-					} else if (option == 4) {
+					} else if (option == OPTION_CCA) {
 						// CCA
 						C206_CaseStudy.setHeader("CCA");
-					} else if (option == 5) {
+					} else if (option == OPTION_CATEGORY) {
 						// Category
 						C206_CaseStudy.setHeader("Category");
 						CategoryDB.showCategoryMenu();
 						int catOption = Helper.readInt("Enter option to select item type > ");
-						if (catOption == 1) {
+						if (catOption == CATEGORY_ADD) {
 							 Category cat = CategoryDB.inputCategory();
 							 CategoryDB.addCategory(cat);
-						} else if (catOption == 2) {
+						} else if (catOption == CATEGORY_VIEW) {
 							CategoryDB.viewAllCategories();
-						} else if (catOption == 3) {
+						} else if (catOption == CATEGORY_DELETE) {
 							Category cat = CategoryDB.inputCategory();
 							CategoryDB.delCategory(cat);
-						} else if (catOption == 4) {
+						} else if (catOption == CATEGORY_UPDATE) {
 							CategoryDB.inputCategory();
 							Category cat = CategoryDB.inputCategory();
 							CategoryDB.updateCategory(cat);
@@ -56,7 +76,7 @@ public class C206_CaseStudy {
 							System.out.println("Invalid category option");
 						}
 					}
-					else if (option == 6) {
+					else if (option == OPTION_QUIT) {
 						System.out.println("Bye!");
 					} else { 
 						System.out.println("Invalid option");}
